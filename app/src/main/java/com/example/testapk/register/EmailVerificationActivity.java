@@ -32,7 +32,7 @@ public class EmailVerificationActivity extends AppCompatActivity {
         //TODO email verification
         Random random = new Random();
 
-        int code = random.nextInt() % 10000;
+        int code = Math.abs(random.nextInt() % 10000);
 
         System.out.println(code);
 
@@ -43,7 +43,9 @@ public class EmailVerificationActivity extends AppCompatActivity {
 
         Intent loginActivity = new Intent(context, LoginActivity.class);
 
-        code_text.setText(Integer.toString(code));
+        sendEmail(reg_user.getEmail(), code);
+
+        //code_text.setText(Integer.toString(code));
 
         submit_buutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +62,15 @@ public class EmailVerificationActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void sendEmail(String email, int code)
+    {
+        String mail_subject = "TestAPK Email verification";
+        String mail_messagge = "We are sending you this email to verify your personal informaion in our apk. Please enter this code in app: " + code;
+
+        MailAPI mailAPI = new MailAPI(this, email, mail_subject, mail_messagge);
+        mailAPI.execute();
     }
 
 }

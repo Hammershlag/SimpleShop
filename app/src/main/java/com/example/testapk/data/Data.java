@@ -1,6 +1,6 @@
 package com.example.testapk.data;
 
-import com.example.testapk.user.UserDTO;
+import com.example.testapk.userData.UserDTO;
 
 import java.util.HashMap;
 import java.util.Map;

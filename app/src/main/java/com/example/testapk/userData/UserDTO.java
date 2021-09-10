@@ -1,4 +1,4 @@
-package com.example.testapk.user;
+package com.example.testapk.userData;
 
 public class UserDTO {
 
@@ -70,5 +70,10 @@ public class UserDTO {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public void banUser(String banReason)
+    {
+        role = "BANNED - " + banReason;
     }
 }

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.testapk.R;
 import com.example.testapk.login.LoginActivity;
-import com.example.testapk.user.UserDatabaseHandler;
+import com.example.testapk.userData.UserDatabaseHandler;
 
 import java.util.Random;
 

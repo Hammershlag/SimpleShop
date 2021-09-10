@@ -13,8 +13,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.testapk.R;
 import com.example.testapk.login.LoginActivity;
-import com.example.testapk.user.UserDTO;
-import com.example.testapk.user.UserDatabaseHandler;
+import com.example.testapk.userData.UserDTO;
+import com.example.testapk.userData.UserDatabaseHandler;
 
 import static com.example.testapk.data.Data.reg_user;
 import static com.example.testapk.register.RegisterFunctions.canRegister;

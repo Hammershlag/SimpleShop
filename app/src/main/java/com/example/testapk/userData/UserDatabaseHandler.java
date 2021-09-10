@@ -1,4 +1,4 @@
-package com.example.testapk.user;
+package com.example.testapk.userData;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -30,7 +30,29 @@ public class UserDatabaseHandler extends SQLiteOpenHelper {
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_LOGIN + " TEXT,"
                 + KEY_PASS + " TEXT," + KEY_EMAIL + " TEXT," + KEY_ROLE + " TEXT" + ")";
         db.execSQL(CREATE_USERS_TABLE);
+        ContentValues values = new ContentValues();
+        values.put(KEY_LOGIN, "admin");
+        values.put(KEY_PASS, "admin");
+        values.put(KEY_EMAIL, "admin@admin.admin");
+        values.put(KEY_ROLE, "ADMIN");
 
+        db.insert(TABLE_USERS, null, values);
+
+        ContentValues values2 = new ContentValues();
+        values2.put(KEY_LOGIN, "banned");
+        values2.put(KEY_PASS, "banned");
+        values2.put(KEY_EMAIL, "admin@admin.admin");
+        values2.put(KEY_ROLE, "BANNED - for being example XDD");
+
+        db.insert(TABLE_USERS, null, values2);
+
+        ContentValues values3 = new ContentValues();
+        values3.put(KEY_LOGIN, "user");
+        values3.put(KEY_PASS, "user");
+        values3.put(KEY_EMAIL, "user@user.user");
+        values3.put(KEY_ROLE, "USER");
+
+        db.insert(TABLE_USERS, null, values3);
     }
 
     @Override
@@ -42,7 +64,6 @@ public class UserDatabaseHandler extends SQLiteOpenHelper {
 
     public void addUser(UserDTO user) {
         SQLiteDatabase db = this.getWritableDatabase();
-        System.out.println("...");
         ContentValues values = new ContentValues();
         values.put(KEY_LOGIN, user.getUsername());
         values.put(KEY_PASS, user.getPassword());

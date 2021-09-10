@@ -14,13 +14,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.testapk.R;
 import com.example.testapk.data.AuthorsActivity;
-import com.example.testapk.main.MainAdminActivity;
-import com.example.testapk.main.MainUserActivity;
 import com.example.testapk.register.RegisterActivity;
-import com.example.testapk.user.UserDTO;
-import com.example.testapk.user.UserDatabaseHandler;
+import com.example.testapk.roles.admin.MainAdminActivity;
+import com.example.testapk.roles.user.MainUserActivity;
+import com.example.testapk.userData.UserDTO;
+import com.example.testapk.userData.UserDatabaseHandler;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.example.testapk.data.Data.current_user_user;
 
@@ -63,6 +65,10 @@ public class LoginActivity extends AppCompatActivity {
         String username = username_field.getText().toString();
         String password = password_field.getText().toString();
 
+        String banned_regex    =   "^BANNED";
+
+
+        Pattern banned_pattern =   Pattern.compile(banned_regex, Pattern.CASE_INSENSITIVE);
 
 
         loginButton.setOnClickListener( new View.OnClickListener() {
@@ -97,13 +103,33 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putString("userPassword", null);
                         }
                         editor.putBoolean("stayLogged", staylogged);
-
+                        Matcher banned_matcher = banned_pattern.matcher(user.getRole());
                         editor.apply();
                         exists = true;
-                        if (user.getRole().equals("USER"))
-                            startActivity(mainUserActivity);
-                        else if (user.getRole().equals("ADMIN"))
-                            startActivity(mainAdminActivity);
+                        if (banned_matcher.find())
+                        {
+                            String[] ban_reason = user.getRole().split(banned_regex);
+                            Toast.makeText(context, "You have been banned for " + ban_reason[ban_reason.length-1], Toast.LENGTH_LONG).show();
+                            //you are banned
+                        }
+                        else
+                        {
+                            switch (user.getRole()) {
+                                case "USER":
+                                    startActivity(mainUserActivity);
+                                    break;
+                                case "ADMIN":
+                                    startActivity(mainAdminActivity);
+                                    break;
+
+                            }
+
+                        }
+//                        if (user.getRole().equals("USER"))
+//                            startActivity(mainUserActivity);
+//                        else if (user.getRole().equals("ADMIN"))
+//                            startActivity(mainAdminActivity);
+
 
                     }
                 }

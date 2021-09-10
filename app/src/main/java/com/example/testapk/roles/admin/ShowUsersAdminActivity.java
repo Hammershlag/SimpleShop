@@ -1,4 +1,4 @@
-package com.example.testapk.main;
+package com.example.testapk.roles.admin;
 
 import android.os.Bundle;
 import android.view.Window;
@@ -6,7 +6,7 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.testapk.R;
 
-public class MainAdminActivity extends AppCompatActivity {
+public class ShowUsersAdminActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,8 @@ public class MainAdminActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
 
-        setContentView(R.layout.main_activity_admin);
+
+        setContentView(R.layout.show_users_admin_activity);
 
     }
 }

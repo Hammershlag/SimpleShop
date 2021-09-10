@@ -5,12 +5,13 @@ public class ProductDTO {
     //TODO immage, name, desription, price, rating, number of products
 
     private byte[] image;
-    private String name, desription;
+    private String name, desription, author, status;
     private double price, rating;
     private int number_of_products, id;
+    private long time_created, time_checked;
 
     public ProductDTO(){}
-    public ProductDTO(int id, byte[] image, String name, String desription, double price, double rating, int number_of_products){
+    public ProductDTO(int id, byte[] image, String name, String desription, double price, double rating, int number_of_products, String author, String status, long time_created, long time_checked){
 
         this.id = id;
         this.image = image;
@@ -19,9 +20,13 @@ public class ProductDTO {
         this.price = price;
         this.rating = rating;
         this.number_of_products = number_of_products;
+        this.author = author;
+        this.status = status;
+        this.time_checked = time_checked;
+        this.time_created = time_created;
     }
 
-    public ProductDTO(byte[] image, String name, String desription, double price, double rating, int number_of_products){
+    public ProductDTO(byte[] image, String name, String desription, double price, double rating, int number_of_products, String author){
 
         this.image = image;
         this.name = name;
@@ -29,15 +34,23 @@ public class ProductDTO {
         this.price = price;
         this.rating = rating;
         this.number_of_products = number_of_products;
+        this.author = author;
+        status = "WAITING";
+        time_created = System.currentTimeMillis();
+        time_checked = -1L;
     }
 
-    public ProductDTO(String name, String desription, double price, double rating, int number_of_products){
+    public ProductDTO(String name, String desription, double price, double rating, int number_of_products, String author){
 
         this.name = name;
         this.desription = desription;
         this.price = price;
         this.rating = rating;
         this.number_of_products = number_of_products;
+        this.author = author;
+        status = "WAITING";
+        time_created = System.currentTimeMillis();
+        time_checked = -1L;
     }
 
     public double getPrice() {
@@ -95,5 +108,36 @@ public class ProductDTO {
     public void setRating(double rating) {
         this.rating = rating;
     }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {this.author = author;}
+
+    public String getStatus() {
+        return status;
+    }
+
+    public long getTime_created() {
+        return time_created;
+    }
+
+    public long getTime_checked() {
+        return time_checked;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setTime_checked(long time_checked) {
+        this.time_checked = time_checked;
+    }
+
+    public void setTime_created(long time_created) {
+        this.time_created = time_created;
+    }
+
 }
 

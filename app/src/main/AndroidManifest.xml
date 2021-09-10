@@ -33,8 +33,11 @@
         <activity android:name=".data.AuthorsActivity"></activity>
         <activity android:name=".register.RegulationsActivity"></activity>
         <activity android:name=".register.EmailVerificationActivity"></activity>
-        <activity android:name=".main.MainAdminActivity"></activity>
-        <activity android:name=".main.MainUserActivity"></activity>
+        <activity android:name=".roles.admin.MainAdminActivity"></activity>
+        <activity android:name=".roles.admin.ShowProductsAdminActivity"></activity>
+        <activity android:name=".roles.admin.ShowProductsToReviewAdminActivity"></activity>
+        <activity android:name=".roles.admin.ShowUsersAdminActivity"></activity>
+        <activity android:name=".roles.user.MainUserActivity"></activity>
         <activity android:name=".register.RegisterActivity"></activity>
 
     </application>

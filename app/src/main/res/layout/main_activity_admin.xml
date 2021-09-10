@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent">
 
+    <TextView
+            android:text="Logged as..."
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/main_activity_admin_logged_with_role_text"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+            android:text="Show Database: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/main_activity_admin_show_database_text"
+            app:layout_constraintTop_toBottomOf="@+id/main_activity_admin_logged_with_role_text"
+            android:layout_marginTop="24dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="4dp"/>
+    <Button
+            android:text="User"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/main_activity_admin_show_users_database_button"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/main_activity_admin_show_database_text"/>
+    <Button
+            android:text="Products"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/main_activity_admin_show_products_database_button"
+            app:layout_constraintStart_toEndOf="@+id/main_activity_admin_show_users_database_button"
+            app:layout_constraintTop_toBottomOf="@+id/main_activity_admin_show_database_text"/>
+    <Button
+            android:text="Products to review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/main_activity_admin_show_products_to_review_database_button"
+            app:layout_constraintStart_toEndOf="@+id/main_activity_admin_show_products_database_button"
+            app:layout_constraintTop_toBottomOf="@+id/main_activity_admin_show_database_text"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

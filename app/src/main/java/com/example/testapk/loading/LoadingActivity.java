@@ -12,11 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.testapk.R;
 import com.example.testapk.data.AuthorsActivity;
 import com.example.testapk.login.LoginActivity;
-import com.example.testapk.main.MainAdminActivity;
-import com.example.testapk.main.MainUserActivity;
+import com.example.testapk.product.ProductDTO;
 import com.example.testapk.product.ProductsDatabaseHandler;
-import com.example.testapk.user.UserDTO;
-import com.example.testapk.user.UserDatabaseHandler;
+import com.example.testapk.roles.admin.MainAdminActivity;
+import com.example.testapk.roles.user.MainUserActivity;
+import com.example.testapk.userData.UserDTO;
+import com.example.testapk.userData.UserDatabaseHandler;
 
 import java.util.List;
 
@@ -62,6 +63,7 @@ public class LoadingActivity extends AppCompatActivity {
         UserDatabaseHandler db = new UserDatabaseHandler(context);
 
         ProductsDatabaseHandler pdb = new ProductsDatabaseHandler(context);
+        pdb.addProduct(new ProductDTO(null, null, null, -1, -1, -1, null));
 
         if (settings.getBoolean("stayLogged", false))
         {
@@ -97,6 +99,7 @@ public class LoadingActivity extends AppCompatActivity {
                 Toast.makeText(context, "Check your input", Toast.LENGTH_LONG).show();
         }
         boolean admin_exists = false;
+
         for (UserDTO userDTO : db.getAllUsers())
         {
 

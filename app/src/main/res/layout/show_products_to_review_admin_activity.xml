@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+    <Button
+            android:text="Show next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/show_products_to_review_admin_activity_show_next_product_button"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="52dp"/>
+    <Button
+            android:text="Submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/show_products_to_review_admin_activity_submit_product_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/show_products_to_review_admin_activity_show_next_product_button"/>
+    <Button
+            android:text="Deny"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/show_products_to_review_admin_activity_deny_product_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/show_products_to_review_admin_activity_submit_product_button"/>
+    <TextView
+            android:text="Name: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/show_products_to_review_admin_activity_product_name_text"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp" android:layout_marginStart="16dp"/>
+    <TextView
+            android:text="Description: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/show_products_to_review_admin_activity_product_description_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/show_products_to_review_admin_activity_product_name_input_text"
+            android:layout_marginTop="24dp" android:layout_marginStart="16dp"/>
+    <TextView
+            android:text="Price: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/show_products_to_review_admin_activity_product_price_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/show_products_to_review_admin_activity_product_description_input_text"
+            android:layout_marginTop="24dp" android:layout_marginStart="16dp"/>
+    <TextView
+            android:text="Author: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/show_products_to_review_admin_activity_product_author_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/show_products_to_review_admin_activity_product_price_input_text"
+            android:layout_marginTop="24dp" android:layout_marginStart="16dp"/>
+    <TextView
+            android:text="pr name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/show_products_to_review_admin_activity_product_name_input_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/show_products_to_review_admin_activity_product_name_text"
+            android:layout_marginTop="8dp" android:layout_marginStart="16dp"/>
+    <TextView
+            android:text="pr description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/show_products_to_review_admin_activity_product_description_input_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/show_products_to_review_admin_activity_product_description_text"
+            android:layout_marginTop="8dp" android:layout_marginStart="16dp"/>
+    <TextView
+            android:text="pr price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/show_products_to_review_admin_activity_product_price_input_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/show_products_to_review_admin_activity_product_price_text"
+            android:layout_marginTop="8dp" android:layout_marginStart="16dp"/>
+    <TextView
+            android:text="pr author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/show_products_to_review_admin_activity_product_author_input_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/show_products_to_review_admin_activity_product_author_text"
+            android:layout_marginTop="8dp" android:layout_marginStart="16dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

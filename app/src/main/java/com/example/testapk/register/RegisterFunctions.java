@@ -3,8 +3,8 @@ package com.example.testapk.register;
 import android.content.Context;
 import android.widget.CheckBox;
 import android.widget.Toast;
-import com.example.testapk.user.UserDTO;
-import com.example.testapk.user.UserDatabaseHandler;
+import com.example.testapk.userData.UserDTO;
+import com.example.testapk.userData.UserDatabaseHandler;
 
 import java.util.List;
 import java.util.regex.Matcher;

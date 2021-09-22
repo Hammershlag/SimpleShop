@@ -17,6 +17,7 @@ import com.example.testapk.userData.UserDTO;
 import com.example.testapk.userData.UserDatabaseHandler;
 
 import static com.example.testapk.data.Data.reg_user;
+import static com.example.testapk.data.SHA256.encrypt;
 import static com.example.testapk.register.RegisterFunctions.canRegister;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -54,7 +55,10 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (canRegister(username.getText().toString(), email.getText().toString(), password.getText().toString(), password_confirmation.getText().toString(), regulations_checkbox, context)) {
-                    reg_user = new UserDTO(username.getText().toString(), password.getText().toString(), email.getText().toString());
+                    reg_user = new UserDTO(username.getText().toString(), encrypt(password.getText().toString()), email.getText().toString());
+                    System.out.println(username.getText().toString());
+                    System.out.println(password.getText().toString());
+                    System.out.println(encrypt(password.getText().toString()));
                     //db.addUser(reg_user);
                     startActivity(emailVerificationActivity);
                     //startActivity(loginActivity);

@@ -2,8 +2,6 @@ package com.example.testapk.product;
 
 public class ProductDTO {
 
-    //TODO immage, name, desription, price, rating, number of products
-
     private byte[] image;
     private String name, desription, author, status;
     private double price, rating;
@@ -15,6 +13,20 @@ public class ProductDTO {
 
         this.id = id;
         this.image = image;
+        this.name = name;
+        this.desription = desription;
+        this.price = price;
+        this.rating = rating;
+        this.number_of_products = number_of_products;
+        this.author = author;
+        this.status = status;
+        this.time_checked = time_checked;
+        this.time_created = time_created;
+    }
+
+    public ProductDTO(int id, String name, String desription, double price, double rating, int number_of_products, String author, String status, long time_created, long time_checked){
+
+        this.id = id;
         this.name = name;
         this.desription = desription;
         this.price = price;
@@ -53,6 +65,19 @@ public class ProductDTO {
         time_checked = -1L;
     }
 
+    public ProductDTO(String name, String desription, double price, String author){
+
+        this.name = name;
+        this.desription = desription;
+        this.price = price;
+        this.rating = 5;
+        this.number_of_products = 0;
+        this.author = author;
+        status = "WAITING";
+        time_created = System.currentTimeMillis();
+        time_checked = -1L;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -73,7 +98,7 @@ public class ProductDTO {
         return number_of_products;
     }
 
-    public String getDesription() {
+    public String getDescription() {
         return desription;
     }
 
@@ -81,7 +106,7 @@ public class ProductDTO {
         return name;
     }
 
-    public void setDesription(String desription) {
+    public void setDescription(String desription) {
         this.desription = desription;
     }
 

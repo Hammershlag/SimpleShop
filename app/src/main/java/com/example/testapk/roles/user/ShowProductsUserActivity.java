@@ -1,4 +1,4 @@
-package com.example.testapk.roles.admin;
+package com.example.testapk.roles.user;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,20 +14,21 @@ import com.example.testapk.R;
 import com.example.testapk.product.ProductDTO;
 import com.example.testapk.product.ProductsDatabaseHandler;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import static com.example.testapk.data.Data.current_product;
 
-public class ShowProductsAdminActivity extends AppCompatActivity {
+public class ShowProductsUserActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
-        getSupportActionBar().hide(); // hide the title bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
         setContentView(R.layout.show_products_activity);
@@ -40,11 +41,19 @@ public class ShowProductsAdminActivity extends AppCompatActivity {
 
         List<ProductDTO> productsList = pdb.getAllProducts();
 
-        String[] product_names = new String[productsList.size()];
+        List<ProductDTO> final_products = new LinkedList<ProductDTO>();
 
         for (int i = 0; i < productsList.size(); i++)
         {
-            product_names[i] = productsList.get(i).getName();
+            if (productsList.get(i).getStatus().equals("APPROVED"))
+            final_products.add(productsList.get(i));
+        }
+
+        String[] product_names = new String[final_products.size()];
+
+        for (int i = 0; i < final_products.size(); i++)
+        {
+            product_names[i] = final_products.get(i).getName();
         }
 
         ArrayAdapter<String> arr = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, product_names);
@@ -56,11 +65,10 @@ public class ShowProductsAdminActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 current_product = productsList.get(i);
 
-                Intent intent = new Intent(context, ProductAdminActivity.class);
+                Intent intent = new Intent(context, ProductUserActivity.class);
                 startActivity(intent);
             }
         });
 
     }
-
 }

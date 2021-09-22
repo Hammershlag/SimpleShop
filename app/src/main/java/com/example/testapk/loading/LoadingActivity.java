@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.testapk.R;
 import com.example.testapk.data.AuthorsActivity;
 import com.example.testapk.login.LoginActivity;
-import com.example.testapk.product.ProductDTO;
 import com.example.testapk.product.ProductsDatabaseHandler;
 import com.example.testapk.roles.admin.MainAdminActivity;
 import com.example.testapk.roles.user.MainUserActivity;
@@ -41,12 +40,34 @@ public class LoadingActivity extends AppCompatActivity {
         Context context = this;
         Activity activity = this;
 
+        UserDatabaseHandler db = new UserDatabaseHandler(context);
+        //db.addUser(new UserDTO(9999, "null", "null", "null"));
 
+        ProductsDatabaseHandler pdb = new ProductsDatabaseHandler(context);
 
+//        pdb.addProduct(new ProductDTO(null, "e", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "f", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "g", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "h", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "i", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "j", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "k", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "l", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "m", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "n", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "o", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "p", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "r", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "s", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "t", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "u", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "w", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "x", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "y", "a", -1, -1, -1, "admin"));
+//        pdb.addProduct(new ProductDTO(null, "z", "a", -1, -1, -1, "admin"));
         checkPermissions(context, activity);
 
-        Intent myIntent;
-
+        Intent myIntent = new Intent(this, LoginActivity.class);;
         Intent mainUserActivity = new Intent(context, MainUserActivity.class);
         Intent mainAdminActivity = new Intent(context, MainAdminActivity.class);
         Intent authorsActivity = new Intent(context, AuthorsActivity.class);
@@ -58,12 +79,13 @@ public class LoadingActivity extends AppCompatActivity {
         SharedPreferences settings = getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
 
-        myIntent = new Intent(this, LoginActivity.class);
 
-        UserDatabaseHandler db = new UserDatabaseHandler(context);
 
-        ProductsDatabaseHandler pdb = new ProductsDatabaseHandler(context);
-        pdb.addProduct(new ProductDTO(null, null, null, -1, -1, -1, null));
+
+
+
+
+        Intent curr_intent = myIntent;
 
         if (settings.getBoolean("stayLogged", false))
         {
@@ -87,15 +109,21 @@ public class LoadingActivity extends AppCompatActivity {
 
                     editor.apply();
                     exists = true;
-                    if (user.getRole().equals("USER"))
-                        startActivity(mainUserActivity);
-                    else if (user.getRole().equals("ADMIN"))
-                        startActivity(mainAdminActivity);
+                    if (user.getRole().equals("USER")) {
+                        curr_intent = mainUserActivity;
+                        break;
+                    }
+                    else if (user.getRole().equals("ADMIN")) {
+                        curr_intent = mainAdminActivity;
+                        System.out.println("Should start");
+                        break;
+                    }
 
                 }
             }
 
             if (!exists)
+
                 Toast.makeText(context, "Check your input", Toast.LENGTH_LONG).show();
         }
         boolean admin_exists = false;
@@ -109,8 +137,8 @@ public class LoadingActivity extends AppCompatActivity {
 
         if (!admin_exists)
         {
-            db.addUser(new UserDTO(999999,"admin", "nie", "admin@admin.admin", "ADMIN"));
+            db.addUser(new UserDTO(999999,"admin", "nie", "admin@admin.admin", "ADMIN", 9999, ""));
         }
-        startActivity(myIntent);
+        startActivity(curr_intent);
     }
 }

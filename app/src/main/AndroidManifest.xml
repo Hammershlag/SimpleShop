@@ -39,6 +39,15 @@
         <activity android:name=".roles.admin.ShowUsersAdminActivity"></activity>
         <activity android:name=".roles.user.MainUserActivity"></activity>
         <activity android:name=".register.RegisterActivity"></activity>
+        <activity android:name=".roles.admin.ProductAdminActivity"></activity>
+        <activity android:name=".roles.user.ProductUserActivity"></activity>
+        <activity android:name=".roles.user.ShowProductsUserActivity"></activity>
+        <activity android:name=".login.ChangePasswordActivity"></activity>
+        <activity android:name=".login.ChangePasswordUsernameActivity"></activity>
+        <activity android:name=".login.EmainVerificationChangePassworddActivity"></activity>
+        <activity android:name=".roles.user.AddProductUserActivity"></activity>
+        <activity android:name=".roles.user.AddBalanceUserActivity"></activity>
+        <activity android:name=".roles.user.SettingsUserActivity"></activity>
 
     </application>
 

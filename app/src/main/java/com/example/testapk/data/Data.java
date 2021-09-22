@@ -1,5 +1,6 @@
 package com.example.testapk.data;
 
+import com.example.testapk.product.ProductDTO;
 import com.example.testapk.userData.UserDTO;
 
 import java.util.HashMap;
@@ -28,7 +29,13 @@ public class Data {
     public static int password_required_special_signs = 1;
     public static int password_required_letters = 8;
 
+    public static int current_product_review_id = 1;
+
     public static UserDTO current_user_user = null;
+
+    public static UserDTO forgot_password_user;
+
+    public static ProductDTO current_product = null;
 
     public static UserDTO reg_user = null;
 

@@ -39,4 +39,12 @@
             android:layout_height="wrap_content"
             android:id="@+id/login_activity_login_button"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+            android:text="Forgot password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:id="@+id/login_activity_forgot_password_text"
+            app:layout_constraintTop_toBottomOf="@+id/login_activity_stay_logged_in_checkbox"
+            app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

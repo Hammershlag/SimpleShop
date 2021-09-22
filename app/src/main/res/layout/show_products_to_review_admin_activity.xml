@@ -56,7 +56,7 @@
             app:layout_constraintTop_toBottomOf="@+id/show_products_to_review_admin_activity_product_price_input_text"
             android:layout_marginTop="24dp" android:layout_marginStart="16dp"/>
     <TextView
-            android:text="pr name"
+            android:text="If you see this, there are no products waiting for acceptation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/show_products_to_review_admin_activity_product_name_input_text"
@@ -64,7 +64,7 @@
             app:layout_constraintTop_toBottomOf="@+id/show_products_to_review_admin_activity_product_name_text"
             android:layout_marginTop="8dp" android:layout_marginStart="16dp"/>
     <TextView
-            android:text="pr description"
+            android:text="If you see this, there are no products waiting for acceptation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/show_products_to_review_admin_activity_product_description_input_text"
@@ -72,7 +72,7 @@
             app:layout_constraintTop_toBottomOf="@+id/show_products_to_review_admin_activity_product_description_text"
             android:layout_marginTop="8dp" android:layout_marginStart="16dp"/>
     <TextView
-            android:text="pr price"
+            android:text="If you see this, there are no products waiting for acceptation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/show_products_to_review_admin_activity_product_price_input_text"
@@ -80,7 +80,7 @@
             app:layout_constraintTop_toBottomOf="@+id/show_products_to_review_admin_activity_product_price_text"
             android:layout_marginTop="8dp" android:layout_marginStart="16dp"/>
     <TextView
-            android:text="pr author"
+            android:text="If you see this, there are no products waiting for acceptation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/show_products_to_review_admin_activity_product_author_input_text"

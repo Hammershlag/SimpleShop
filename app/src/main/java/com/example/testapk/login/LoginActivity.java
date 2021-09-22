@@ -7,10 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.testapk.R;
 import com.example.testapk.data.AuthorsActivity;
@@ -25,22 +22,24 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static com.example.testapk.data.Data.current_user_user;
+import static com.example.testapk.data.SHA256.encrypt;
 
 public class LoginActivity extends AppCompatActivity {
 
     protected Button loginButton, registerButton;
     protected EditText username_field, password_field;
     protected CheckBox checkBox;
+    protected TextView forgot_password;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
-        getSupportActionBar().hide(); // hide the title bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.login_activity);
         Context context = this;
@@ -49,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent registerActivity = new Intent(context, RegisterActivity.class);
         Intent camelActivity = new Intent(context, AuthorsActivity.class);
 
+        //TODO forgot password
 
         String PREFS_NAME = "Login";
 
@@ -56,14 +56,12 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences settings = getApplicationContext().getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
 
+        forgot_password = findViewById(R.id.login_activity_forgot_password_text);
         checkBox = findViewById(R.id.login_activity_stay_logged_in_checkbox);
         loginButton = findViewById(R.id.login_activity_login_button);
         registerButton = findViewById(R.id.login_activity_register_button);
         username_field = findViewById(R.id.login_activity_username_field);
         password_field = findViewById(R.id.login_activity_password_field);
-
-        String username = username_field.getText().toString();
-        String password = password_field.getText().toString();
 
         String banned_regex    =   "^BANNED";
 
@@ -83,12 +81,20 @@ public class LoginActivity extends AppCompatActivity {
 
                 boolean staylogged = false;
 
-                if (username_field.getText().toString().equals("authors") && password_field.getText().toString().equals("authors"))
+                String login = username_field.getText().toString();
+                String passwprd = encrypt(password_field.getText().toString());
+
+                System.out.println(login);
+                System.out.println(passwprd);
+
+                if (login.equals("authors") && passwprd.equals("authors"))
                     startActivity(camelActivity);
 
                 for (UserDTO user : userDTOSList)
                 {
-                    if (user.getUsername().equals(username_field.getText().toString()) && user.getPassword().equals(password_field.getText().toString())) {
+                    System.out.println(user.getUsername());
+                    System.out.println(user.getPassword());
+                    if (user.getUsername().equals(login) && user.getPassword().equals(passwprd)) {
                         current_user_user = user;
                         if (checkBox.isChecked()) {
 
@@ -125,12 +131,6 @@ public class LoginActivity extends AppCompatActivity {
                             }
 
                         }
-//                        if (user.getRole().equals("USER"))
-//                            startActivity(mainUserActivity);
-//                        else if (user.getRole().equals("ADMIN"))
-//                            startActivity(mainAdminActivity);
-
-
                     }
                 }
 
@@ -145,6 +145,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(registerActivity);
             }
+        });
+
+        forgot_password.setOnClickListener(view ->
+        {
+            Intent intent = new Intent(context, ChangePasswordUsernameActivity.class);
+            startActivity(intent);
         });
 
     }

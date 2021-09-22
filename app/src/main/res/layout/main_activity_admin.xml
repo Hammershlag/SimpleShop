@@ -33,4 +33,9 @@
             android:layout_height="wrap_content" android:id="@+id/main_activity_admin_show_products_to_review_database_button"
             app:layout_constraintStart_toEndOf="@+id/main_activity_admin_show_products_database_button"
             app:layout_constraintTop_toBottomOf="@+id/main_activity_admin_show_database_text"/>
+    <Button
+            android:text="log out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/main_activity_admin_log_out_button"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

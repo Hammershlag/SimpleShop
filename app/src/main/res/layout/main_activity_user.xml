@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
                                                    android:layout_height="match_parent">
 
     <TextView
@@ -8,18 +10,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/main_activity_username"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="220dp" android:layout_marginStart="124dp"/>
-    <TextView
-            android:text="Password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/main_activity_password"
-            app:layout_constraintTop_toBottomOf="@+id/main_activity_username" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="8dp" android:layout_marginStart="124dp"/>
+            android:layout_marginTop="28dp" android:layout_marginStart="88dp"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true" tools:srcCompat="@tools:sample/avatars" android:id="@+id/floatingActionButton"
+            android:clickable="true" tools:srcCompat="@tools:sample/avatars" android:id="@+id/main_activity_user_user_icon"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"/>
+    <Button
+            android:text="Log out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/main_activity_user_log_out_button"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/main_activity_user_add_prodduct_button" app:layout_constraintHorizontal_bias="1.0"/>
+    <Button
+            android:text="Products list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/main_activity_user_products_list_button"
+            app:layout_constraintStart_toEndOf="@+id/main_activity_user_add_prodduct_button"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    <Button
+            android:text="Add product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/main_activity_user_add_prodduct_button"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.408"/>
+    <TextView
+            android:text="Balance: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/main_activity_user_balance_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_activity_user_user_icon" android:layout_marginTop="184dp"
+            android:layout_marginStart="16dp"/>
+    <TextView
+            android:text="bal_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/main_activity_user_balance_input"
+            app:layout_constraintTop_toBottomOf="@+id/main_activity_user_balance_text"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
             android:layout_marginStart="16dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

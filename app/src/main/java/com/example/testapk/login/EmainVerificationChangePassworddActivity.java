@@ -1,4 +1,4 @@
-package com.example.testapk.register;
+package com.example.testapk.login;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,29 +8,30 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.testapk.R;
-import com.example.testapk.login.LoginActivity;
-import com.example.testapk.userData.UserDatabaseHandler;
+import com.example.testapk.register.MailAPI;
 
 import java.util.Random;
 
-import static com.example.testapk.data.Data.reg_user;
+import static com.example.testapk.data.Data.forgot_password_user;
 
-public class EmailVerificationActivity extends AppCompatActivity {
+public class EmainVerificationChangePassworddActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
-        getSupportActionBar().hide(); // hide the title bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 
         setContentView(R.layout.email_verifiation_activity);
+
+        Context context = this;
 
         Random random = new Random();
 
@@ -38,18 +39,11 @@ public class EmailVerificationActivity extends AppCompatActivity {
 
         System.out.println(code);
 
-        Context context = this;
-        TextView code_text = findViewById(R.id.email_verification_activity_code_display_text);
         Button submit_buutton = findViewById(R.id.email_verification_activity_enter_code_button);
         EditText code_input = findViewById(R.id.email_verification_activity_enter_code_field);
 
-        Intent loginActivity = new Intent(context, LoginActivity.class);
 
-        sendEmail(reg_user.getEmail(), code);
-
-        //code_text.setText(Integer.toString(code));
-
-
+        sendEmail(forgot_password_user.getEmail(), code);
 
         submit_buutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,10 +53,8 @@ public class EmailVerificationActivity extends AppCompatActivity {
                 {
                     System.out.println("Dobry numer");
 
-                    UserDatabaseHandler db = new UserDatabaseHandler(context);
-                    db.addUser(reg_user);
-
-                    startActivity(loginActivity);
+                    Intent intent = new Intent(context, ChangePasswordActivity.class);
+                    startActivity(intent);
                 }
                 else Toast.makeText(context, "Wrong code", Toast.LENGTH_LONG).show();
 
@@ -73,11 +65,10 @@ public class EmailVerificationActivity extends AppCompatActivity {
 
     private void sendEmail(String email, int code)
     {
-        String mail_subject = "TestAPK Email verification";
-        String mail_messagge = "We are sending you this email to verify your personal informaion in our apk. Please enter this code in app: " + code;
+        String mail_subject = "TestAPK - Change password email";
+        String mail_messagge = "We are sending you this email to let you change your password. Please enter this code in app: " + code;
 
         MailAPI mailAPI = new MailAPI(this, email, mail_subject, mail_messagge);
         mailAPI.execute();
     }
-
 }

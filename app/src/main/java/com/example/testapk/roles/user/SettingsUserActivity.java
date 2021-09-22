@@ -32,6 +32,7 @@ public class SettingsUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context,AddBalanceUserActivity.class);
+                startActivity(intent);
             }
         });
     }

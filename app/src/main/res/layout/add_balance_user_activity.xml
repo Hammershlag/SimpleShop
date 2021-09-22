@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent">
-
+    <SeekBar
+            android:layout_width="385dp"
+            android:layout_height="25dp" android:id="@+id/add_balance_user_activity_seek_bar"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="64dp"/>
+    <TextView
+            android:text="000 000 000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/add_balance_user_activity_phone_number_text"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/add_balance_user_activity_seek_bar"/>
+    <TextView
+            android:text="Credit card number: (4887704455185832)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/add_balance_user_activity_credit_card_number_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_balance_user_activity_seek_bar"
+            android:layout_marginTop="48dp" android:layout_marginStart="16dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/add_balance_user_activity_credit_card_number_input"
+            app:layout_constraintTop_toBottomOf="@+id/add_balance_user_activity_credit_card_number_text"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
+            android:layout_marginStart="12dp"/>
+    <Button
+            android:text="submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/add_balance_user_activity_submit_button"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp" app:layout_constraintEnd_toEndOf="parent"/>
+    <Spinner
+            android:layout_width="409dp"
+            android:layout_height="wrap_content" android:id="@+id/add_balance_user_activity_value_spinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_balance_user_activity_credit_card_number_input"
+            android:layout_marginTop="12dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
